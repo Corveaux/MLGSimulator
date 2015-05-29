@@ -9,7 +9,7 @@ resources={
 		"allow_negative":False,
 		"show_if_empty":True,
 		"cap":None,
-		"symbol":"fl. oz.",
+		"symbol":"1/8 ozs",
 		"format_string":"{:.2f}"
 	},
 	"noscopes":{
