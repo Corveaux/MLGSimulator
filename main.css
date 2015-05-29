@@ -1,0 +1,74 @@
+.y-axis-scrollable{
+	overflow-y: scroll;
+}
+
+#resources-pane{
+	background-color: #ddffdd;
+	width: 20%;
+	height: 95%;
+}
+
+#memo-bar-top{
+	background: #ddddff;
+	width: 100%;
+	height: 5%;
+	overflow: hidden;
+}
+
+#debug-cheats{
+	visibility: visible; /* Set to `hidden` in production*/
+}
+
+#save-buttons{
+	float: right;
+}
+
+#switchable-window-menu{
+	height: 2.5%;
+	width: 100%;
+	float: left;
+	background-color: #ffeeee;
+	border-bottom: solid;
+	border-bottom-width: 2px;
+}
+
+.pane-switcher{
+	border: solid;
+	border-width: 2px;
+}
+
+#width-container{
+	width: 100%;
+}
+.switchable-window-content{
+	visibility: hidden;
+}
+
+.switchable-window-content-selected{
+	visibility: visible;
+	position: absolute;
+	top: 5%;
+}
+
+#switchable-window-content-upgrades{
+	width: 100%;
+    margin: 0 auto;
+}
+
+#switchable-window-container{
+	position: absolute;
+	height: 95%;
+	width: 80%;
+	float: left;
+	top:5%;
+	left:20%;
+	border-left: solid;
+	border-left-width: 2px;
+	border-top: solid;
+	border-top-width: 2px;
+	text-align: center;
+}
+
+#body-main{
+	position: relative;
+}

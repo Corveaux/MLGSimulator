@@ -1,0 +1,40 @@
+<html>
+	<head>
+		<title>Dank Kliker</title>
+		<script src="brython/brython.js"></script>
+		<link rel="stylesheet" type="text/css" href="main.css"/>
+	</head>
+	<body onload="brython(1)">
+		<div id="body-main">
+			<div id="memo-bar-top">
+				<span id="loading_memo">
+					<b>Loading...</b>
+					(If this lasts longer than 10 seconds, something is wrong. Check the console.)
+				</span>
+				<span id="debug-cheats">
+					<a href="#" id="cheat_add_weedfarm">Add Weedfarm</a>
+				</span>
+				<span id="save-buttons">
+					<a href="#" id="save_session">Save Game</a>
+					<a href="#" id="load_session">Load Game</a>
+				</span>
+			</div>
+			<div id="width-container">
+				<div class="y-axis-scrollable" id="resources-pane"></div>
+				<div id="switchable-window-container">
+					<div id="switchable-window-menu">
+						<a href="#" class="pane-switcher" id="switch-pane-buildings">Laptop</a>
+						<a href="#" class="pane-switcher" id="switch-pane-upgrades">Best Buy</a>
+					</div>
+					<br/>
+					<div class="switchable-window-content-selected" id="switchable-window-content-buildings">
+						<button id="acquire_weed" title="Gather Weed"><i>we</i> <b>must</b> <u>go</u> <i><b><u>DANKER</u></b></i></button>
+					</div>
+					<div class="switchable-window-content" id="switchable-window-content-upgrades">Test!</div>
+				</div>
+			</div>
+		</div>
+
+		<script type="text/python" src="main.py"></script>
+	</body>
+</html>
