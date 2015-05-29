@@ -70,16 +70,22 @@ class UpgradeRenderingDirective(RenderingDirective):
 		
 		#self.update()
 
-	@staticmethod
-	def _produce_click_handler(upgrade_id):
+	
+	def _produce_click_handler(self, upgrade_id):
 		def _internal(e):
 			for k, v in upgrades[upgrade_id]["cost"].items():
 				if root.game.currencypool.get_amount(k)<v:
-					browser.alert("You don't have enough "+root.game.currencypool.get_name(k)+" (need "+str(v)+")")
+					# browser.alert("You don't have enough "+root.game.currencypool.get_name(k)+" (need "+str(v)+")")
 					return False
 			for k, v in upgrades[upgrade_id]["cost"].items():
 				root.game.currencypool.add_amount(k, -v)
+			# print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
 			root.game.upgrades.append(upgrade_id)
+			self.cache_upgrades=[-1]
+			# print("Added "+upgrade_id)
+			# print("root.game.upgrades="+str(root.game.upgrades))
+			self.update()
+		# print("created a _internal for "+upgrade_id)
 		return _internal
 
 	def update(self):
@@ -87,25 +93,29 @@ class UpgradeRenderingDirective(RenderingDirective):
 		# print("root.game.upgrades="+str(root.game.upgrades))
 		# print("self.cache_upgrades="+str(self.cache_upgrades))
 		if root.game.upgrades!=self.cache_upgrades:
-			print("UpgradeRenderingDirective is rerendering")
+			# print("UpgradeRenderingDirective is rerendering")
 			self.cache_upgrades=root.game.upgrades
 			document["switchable-window-content-upgrades"].clear()
-			print(list(upgrades.keys()))
+			# print(list(upgrades.keys()))
 			for upgrade in list(upgrades.keys()):
 				ok=True
 				for req in upgrades[upgrade].get("required",[]):
 					if req not in self.cache_upgrades:
-						print("req "+req+" not satasfied for "+upgrade+", skipping")
+						# print("req "+req+" not satasfied for "+upgrade+", skipping")
 						ok=False
 				if ok:
-					print("Adding "+upgrade)
+					# print("Adding "+upgrade)
 					button=html.BUTTON()
+					# print("created button")
 					button<=html.DIV("Buy "+upgrades[upgrade]["name"],
 						style={"color":upgrades[upgrade]["color"], "font-weight":"bold"},
 						title=upgrades[upgrade]["desc"])
 					button<=html.DIV(util.create_cost_string(upgrades[upgrade]["cost"]))
+					# print("added divs")
 					if upgrade in self.cache_upgrades: button.disabled=1
+					# print("disabled if reqd")
 					button.bind("click", self._produce_click_handler(upgrade))
+					# print("bound")
 					document["switchable-window-content-upgrades"]<=button
 					document["switchable-window-content-upgrades"]<=html.BR()
 
