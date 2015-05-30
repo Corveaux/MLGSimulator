@@ -75,4 +75,7 @@
 
 .no-dots{
 	outline: none;
+	position: absolute;
+	left: 750;
+	top: 250
 }
